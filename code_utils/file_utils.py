@@ -110,8 +110,20 @@ def unravel_files(path: str, keep_abs: bool = False, skip: list = [".git", "__py
 
 
 
-def filter_ext(files: list, ext: str) -> list:
+def filter_ext(files: list, ext: list) -> list:
     """
-    Filter files by extension
+    Filter files by extension/s
+
+    Parameters
+    ----------
+    files : list
+        A list of all files in need of filtering
+    ext : list
+        A list of extension to return (DO NOT INCLUDE THE '.' BEFORE EXTENSIONS)
+
+    Returns
+    -------
+    A filtered list of files
     """
-    pass
+
+    return [file for file in files if file.split(os.sep)[-1].split(".")[-1] in ext]
